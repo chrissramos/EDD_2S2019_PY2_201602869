@@ -5,6 +5,8 @@
  */
 package proyecto2;
 
+import grafico.Login;
+
 /**
  *
  * @author Chriss Ramos
@@ -16,6 +18,10 @@ public class Proyecto2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Login v = new Login();
+        v.setTitle("EDD DRIVE");
+        
+        v.setVisible(true);
     }
     
 }
