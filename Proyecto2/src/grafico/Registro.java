@@ -5,6 +5,9 @@
  */
 package grafico;
 
+
+import enlace.Puente;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Chriss Ramos
@@ -29,8 +32,8 @@ public class Registro extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtUsuarioR = new javax.swing.JTextField();
+        txtPassR = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -40,12 +43,17 @@ public class Registro extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Registrar Usuario");
 
-        jTextField1.setFont(new java.awt.Font("Lucida Sans Typewriter", 0, 18)); // NOI18N
+        txtUsuarioR.setFont(new java.awt.Font("Lucida Sans Typewriter", 0, 18)); // NOI18N
 
-        jTextField2.setFont(new java.awt.Font("Lucida Sans Typewriter", 0, 18)); // NOI18N
+        txtPassR.setFont(new java.awt.Font("Lucida Sans Typewriter", 0, 18)); // NOI18N
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setText("Registar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Sitka Banner", 0, 24)); // NOI18N
         jLabel2.setText("Usuario:");
@@ -66,11 +74,11 @@ public class Registro extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel3)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtPassR, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel2)
                             .addGap(30, 30, 30)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtUsuarioR, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -80,11 +88,11 @@ public class Registro extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUsuarioR, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPassR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(jButton1)
@@ -93,6 +101,17 @@ public class Registro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        // insertar en hash
+        if(txtPassR.getText().length() < 8){
+            JOptionPane.showMessageDialog(null, "La contrasenia debe ser de al menos 8 caracteres");
+        }else{
+            Puente.agregar(txtUsuarioR.getText(), txtPassR.getText());
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,7 +153,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtPassR;
+    private javax.swing.JTextField txtUsuarioR;
     // End of variables declaration//GEN-END:variables
 }
