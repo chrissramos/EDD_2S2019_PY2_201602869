@@ -30,15 +30,15 @@ public class ListaEnlazada {
     }
     
     public void add(NodoLista nodo){
-        if(vacia()){
+        if(inicio== null){
+            System.out.println("Inicio vacio");
             inicio = nodo;
+            ultimo = nodo;
             
         }else{
-            NodoLista aux = inicio;
-            while(aux.getSiguiente() != null){
-                aux = aux.getSiguiente();
-            }
-            aux.setSiguiente(nodo);
+            System.out.println("Inicio lleno");
+            ultimo.setSiguiente(nodo);
+            ultimo = nodo;
             
         }
         tamanio++;

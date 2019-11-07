@@ -23,6 +23,7 @@ public class Proyecto2 {
         v.setTitle("EDD DRIVE");
         Puente.contador = 7;
         Puente.porcentaje = 0;
+        Puente.cuantos = 0;
         v.setVisible(true);
     }
     
