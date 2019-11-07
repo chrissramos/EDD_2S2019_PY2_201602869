@@ -10,35 +10,18 @@ package estructuras;
  * @author Chriss Ramos
  */
 public class Hash {
-    String nombre;
-    String pass;
+    
     int indice;
-    String timestamp;
+    ListaEnlazada lista;
+    int tamanio;
 
-    public Hash(String nombre, String pass, int indice, String timestamp) {
-        this.nombre = nombre;
-        this.pass = pass;
+    public Hash(int indice, ListaEnlazada lista, int tamanio) {
         this.indice = indice;
-        this.timestamp = timestamp;
+        this.lista = lista;
+        this.tamanio = tamanio;
     }
 
     public Hash() {
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
     }
 
     public int getIndice() {
@@ -49,12 +32,28 @@ public class Hash {
         this.indice = indice;
     }
 
-    public String getTimestamp() {
-        return timestamp;
+    public ListaEnlazada getLista() {
+        return lista;
     }
 
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
+    public void setLista(ListaEnlazada lista) {
+        this.lista = lista;
     }
+
+    public int getTamanio() {
+        return tamanio;
+    }
+
+    public void setTamanio(int tamanio) {
+        this.tamanio = tamanio;
+    }
+
+  
+
+
+   
+
+    
+
     
 }

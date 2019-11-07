@@ -5,6 +5,7 @@
  */
 package proyecto2;
 
+import enlace.Puente;
 import grafico.Login;
 
 /**
@@ -20,7 +21,8 @@ public class Proyecto2 {
         // TODO code application logic here
         Login v = new Login();
         v.setTitle("EDD DRIVE");
-        
+        Puente.contador = 7;
+        Puente.porcentaje = 0;
         v.setVisible(true);
     }
     
