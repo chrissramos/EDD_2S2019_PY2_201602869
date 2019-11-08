@@ -11,6 +11,10 @@ import estructuras.NodoLista;
 import grafico.Administrador;
 import javax.swing.JOptionPane;
 import java.util.Date;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 /**
  *
@@ -87,10 +91,47 @@ public class Puente {
                   
         }
          
+        graficarHash();
     }
     public int tamanioHash(){
         int tamanio = 0;
         
         return tamanio;
+    }
+    
+    public static void graficarHash(){
+        try {
+            String ruta = "C:\\Users\\Chriss Ramos\\Desktop\\Entradasp2\\Dots\\Hash.dot";
+            //String img = "C:\\Users\\Chriss Ramos\\Desktop\\Entradasp2\\Dots\\Hash.png";
+            
+            File file = new File(ruta);
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            pw.println("digraph G {");
+            pw.println("node[shape=rectangle];\n");
+            pw.println("rankdir = RL;\n");
+            
+            for (int i = 0; i < contador ; i++) {
+                pw.println(i+"[label = \"" +i + ") \"] \n");
+            }
+            pw.println("}");
+            pw.close();
+            bw.close();
+            
+            //String dotPath = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
+            //String cmd = dotPath + " -Tjpg " + ruta + " -o "+ img;
+            //String aber = "dot -Tpng Hash.dot -o Hash.png";
+            //System.out.println(cmd);
+            ///Runtime.getRuntime().exec("cd C:\\Users\\Chriss Ramos\\Desktop\\Entradasp2\\Dots");
+            //Runtime.getRuntime().exec(aber);
+            //Runtime.getRuntime().exec(cmd);
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        
     }
 }
