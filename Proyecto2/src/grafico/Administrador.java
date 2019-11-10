@@ -25,6 +25,8 @@ public class Administrador extends javax.swing.JFrame {
     
     
     DefaultTableModel modeloC;
+    DefaultTableModel modeloI;
+    
     public Administrador() {
         
         initComponents();
@@ -33,6 +35,10 @@ public class Administrador extends javax.swing.JFrame {
         modeloC.addColumn("Pass");
         this.tablaCorrecta.setModel(modeloC);
         
+        modeloI = new DefaultTableModel();
+        modeloI.addColumn("Usuario");
+        modeloI.addColumn("Motivo");
+        this.tablaIncorrecta.setModel(modeloI);
         
         this.setLocationRelativeTo(null);
         
@@ -111,10 +117,7 @@ public class Administrador extends javax.swing.JFrame {
 
         tablaIncorrecta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
@@ -163,7 +166,7 @@ public class Administrador extends javax.swing.JFrame {
                                 .addComponent(jSeparator2))
                             .addComponent(jLabel5)
                             .addComponent(jButton7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 433, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 432, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
@@ -245,7 +248,13 @@ public class Administrador extends javax.swing.JFrame {
             while((row = csvReader.readLine()) != null){
                 String[] data = row.split(",");
                 System.out.println("Dato:" + data[0] + " " + data[1] );
-                modeloC.addRow(data);
+                
+                if(data[1].length() < 8){
+                    data[1] = "Contrasenia corta";
+                    modeloI.addRow(data);
+                }else{
+                    modeloC.addRow(data);
+                }
                 
                 System.out.println("------------------------");
                         

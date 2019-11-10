@@ -43,6 +43,8 @@ public class Puente {
         System.out.println("contador: " + contador);
         int posicionH = suma % contador;
         System.out.println("posicionH: " + posicionH);
+        
+        //ver tamanio de hash si llega al 75 por ciento, aumentar
         //verificar colision
         if(tablaH[posicionH]== null ){ // posicion vacia, insertar directamente
             Hash h = new Hash();
@@ -64,6 +66,7 @@ public class Puente {
             //hacer el porcentaje
             cuantos++;
             float resultado = (cuantos * 100)/contador;
+            porcentaje = resultado;
             System.out.println("porcentaje: " + resultado);
         }else{ // si hay colision /, buscar indice y obtener lista e insertar siguiente nodo
             //obtener objeto y lista de esa posicion de la hash
@@ -97,6 +100,18 @@ public class Puente {
         int tamanio = 0;
         
         return tamanio;
+    }
+    
+    public static boolean getPrimo(int numero){
+        int contador2 = 2;
+        boolean primo=true;
+        while ((primo) && (contador2!=numero)){
+          if (numero % contador2 == 0)
+            primo = false;
+          contador2++;
+        }
+        return primo;
+        
     }
     
     public static void graficarHash(){
