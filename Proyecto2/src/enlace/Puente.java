@@ -40,11 +40,31 @@ public class Puente {
             int ascii = (int) character;
             suma  = suma + ascii;
         }
+        //ver tamanio de hash si llega al 75 por ciento, aumentar
+        //JOptionPane.showMessageDialog(null, "porcentaje actual: "+ porcentaje);
+        if((int)porcentaje > 75){
+            System.out.println("porcentaje mayor");
+            int limite = contador + 100;
+            for (int i = contador+1; i < limite; i++) {
+              if(getPrimo(i) == true){
+                  contador = i;
+                  break;
+              }                  
+            }
+            JOptionPane.showMessageDialog(null, "Nuevo tamanio: " + contador);
+            Hash[] aux = tablaH;
+            
+            tablaH = new Hash[contador];
+            for (int i = 0; i < aux.length; i++) {
+                tablaH[i] = aux[i];
+            }
+        }
+        
         System.out.println("contador: " + contador);
         int posicionH = suma % contador;
         System.out.println("posicionH: " + posicionH);
         
-        //ver tamanio de hash si llega al 75 por ciento, aumentar
+        
         //verificar colision
         if(tablaH[posicionH]== null ){ // posicion vacia, insertar directamente
             Hash h = new Hash();
@@ -77,6 +97,7 @@ public class Puente {
             NodoLista nodo = new NodoLista();
             nodo.setNombreUsuario(user);
             nodo.setPassUsuario(pass);
+            
             //fecha
             Date d = new Date();
             String fecha =d.toString();
@@ -85,6 +106,7 @@ public class Puente {
             h.getLista().add(nodo);
             cuantos++;
             float resultado = (cuantos * 100)/contador;
+            porcentaje = resultado;
             System.out.println("porcentaje: " + resultado);
             //obtener lista ya creada con anterioridad e insertar 
             //ListaEnlazada l2 = new ListaEnlazada(); 
