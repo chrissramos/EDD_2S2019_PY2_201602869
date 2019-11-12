@@ -116,7 +116,7 @@ public class Puente {
                   
         }
          
-        graficarHash();
+        //graficarHash();
     }
     public int tamanioHash(){
         int tamanio = 0;
@@ -137,38 +137,51 @@ public class Puente {
     }
     
     public static void graficarHash(){
-        try {
-            String ruta = "C:\\Users\\Chriss Ramos\\Desktop\\Entradasp2\\Dots\\Hash.dot";
-            //String img = "C:\\Users\\Chriss Ramos\\Desktop\\Entradasp2\\Dots\\Hash.png";
-            
-            File file = new File(ruta);
-            FileWriter fw = new FileWriter(file);
-            BufferedWriter bw = new BufferedWriter(fw);
-            PrintWriter pw = new PrintWriter(bw);
-            pw.println("digraph G {");
-            pw.println("node[shape=rectangle];\n");
-            pw.println("rankdir = RL;\n");
-            
-            for (int i = 0; i < contador ; i++) {
-                pw.println(i+"[label = \"" +i + ") \"] \n");
-            }
-            pw.println("}");
-            pw.close();
-            bw.close();
-            
-            //String dotPath = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
-            //String cmd = dotPath + " -Tjpg " + ruta + " -o "+ img;
-            //String aber = "dot -Tpng Hash.dot -o Hash.png";
-            //System.out.println(cmd);
-            ///Runtime.getRuntime().exec("cd C:\\Users\\Chriss Ramos\\Desktop\\Entradasp2\\Dots");
-            //Runtime.getRuntime().exec(aber);
-            //Runtime.getRuntime().exec(cmd);
-            
-            
-        } catch (Exception e) {
-            e.printStackTrace();
+        FileWriter fichero = null;
+        PrintWriter escritor;
+        try
+        {
+            fichero = new FileWriter("graficaHash.dot");
+            escritor = new PrintWriter(fichero);
+            //ver aqui
+            escritor.print(getCodigoGraphvizHash());
+            //
+        
+        } 
+        catch (Exception e){
+            System.err.println("Error al escribir el archivo graficaHash.dot");
+        }finally{
+           try {
+                if (null != fichero)
+                    fichero.close();
+           }catch (Exception e2){
+               System.err.println("Error al cerrar el archivo graficaHash.dot");
+           } 
         }
-        
-        
+        try{
+          Runtime rt = Runtime.getRuntime();
+          rt.exec( "dot -Tjpg -o "+"graficaHash.jpg"+" graficaHash.dot");
+          //Esperamos medio segundo para dar tiempo a que la imagen se genere.
+          //Para que no sucedan errores en caso de que se decidan graficar varios
+          //árboles sucesivamente.
+          Thread.sleep(500);
+        } catch (Exception ex) {
+            System.err.println("Error al generar la imagen para el archivo aux_grafico.dot");
+        }
     }
+    private static String getCodigoGraphvizHash() {
+        return "digraph grafica{\n" +
+               "rankdir=LR;\n" +
+               "node [shape = record, style=filled, fillcolor=seashell2];\n"+
+                getCodigoInternoH()+
+                "}\n";
+    }
+    public static String getCodigoInternoH(){
+        String etiqueta = "";
+        for (int i = 0; i <contador; i++) {
+            etiqueta+= i+"[label = \"" +i + ") \"] \n";
+        }
+        return etiqueta;
+    }
+    
 }
