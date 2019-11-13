@@ -130,6 +130,7 @@ public class Login extends javax.swing.JFrame {
         if(txtUsuario.getText().equals("admin") && txtPass.getText().equals("admin")){
             JOptionPane.showMessageDialog(null, "Bienvenido Administrador");
             this.setVisible(false);
+            
             Puente.a.setVisible(true);
         }
         else{

@@ -10,9 +10,9 @@ package estructuras;
  * @author Chriss Ramos
  */
 public class ListaEnlazada {
-    NodoLista inicio;
-    NodoLista ultimo;
-    int tamanio;
+    public NodoLista inicio;
+    public NodoLista ultimo;
+    public int tamanio;
     
     public void ListaEnlazada(){
         this.inicio = null;

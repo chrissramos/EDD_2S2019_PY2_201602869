@@ -111,6 +111,9 @@ public class Registro extends javax.swing.JFrame {
             Puente.agregar(txtUsuarioR.getText(), txtPassR.getText());
         }
         
+        txtPassR.setText("");
+        txtUsuarioR.setText("");
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

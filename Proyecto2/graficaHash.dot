@@ -1,11 +1,19 @@
 digraph grafica{
-rankdir=TB;
+rankdir=LR;
 node [shape = record, style=filled, fillcolor=seashell2];
-0[label = "0) "] 
+0[label = "0) "]; 
+0->Pedro456;
+Pedro456 Pedro456[label = "Pedro456 "] 
+ Dennis[label = "Dennis "] 
 1[label = "1) "] 
-2[label = "2) "] 
+2[label = "2) "]; 
+2->Juan123;
+Juan123 Juan123[label = "Juan123 "] 
+ Randall[label = "Randall "] 
 3[label = "3) "] 
-4[label = "4) "] 
+4[label = "4) "]; 
+4->Ricardo123;
+Ricardo123 Ricardo123[label = "Ricardo123 "] 
 5[label = "5) "] 
 6[label = "6) "] 
 }

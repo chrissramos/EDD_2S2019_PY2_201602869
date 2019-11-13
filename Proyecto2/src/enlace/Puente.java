@@ -32,7 +32,18 @@ public class Puente {
     public static void agregar(String user, String pass){
         //aqui se agrega a la hash  codificar el nombre de usuario 
         //obtener valor entero de usuario
-       JOptionPane.showMessageDialog(null, "se agregara: " + user + ","+ pass);
+       //JOptionPane.showMessageDialog(null, "se agregara: " + user + ","+ pass);
+       String[] data = new String[2];
+       data[0] = user;
+           
+       if(cuantos>0 &&repetido(user) ){
+           JOptionPane.showMessageDialog(null, "Usuario repetido: " + user);
+           data[1]= "Usuario repetido";
+           a.modeloI.addRow(data);
+           
+       }else{
+       data[1]= pass;
+       a.modeloC.addRow(data);
        int suma = 0;
        int tamanio = user.length();
         for (int i = 0; i < tamanio; i++) {
@@ -60,9 +71,9 @@ public class Puente {
             }
         }
         
-        System.out.println("contador: " + contador);
+       //System.out.println("contador: " + contador);
         int posicionH = suma % contador;
-        System.out.println("posicionH: " + posicionH);
+        //System.out.println("posicionH: " + posicionH);
         
         
         //verificar colision
@@ -74,7 +85,7 @@ public class Puente {
             //fecha
             Date d = new Date();
             String fecha =d.toString();
-            System.out.println("Fecha: " + fecha);
+            //System.out.println("Fecha: " + fecha);
             nodo.setTimeStamp(fecha);
             h.setTamanio(1);
             // insertando en la lista de ese indice de la hash
@@ -92,7 +103,7 @@ public class Puente {
             //obtener objeto y lista de esa posicion de la hash
             Hash h = new Hash();
             h = tablaH[posicionH];
-            System.out.println("info: " + h.getTamanio());
+            //System.out.println("info: " + h.getTamanio());
             //creando nodo a insertar
             NodoLista nodo = new NodoLista();
             nodo.setNombreUsuario(user);
@@ -101,7 +112,7 @@ public class Puente {
             //fecha
             Date d = new Date();
             String fecha =d.toString();
-            System.out.println("Fecha: " + fecha);
+            //System.out.println("Fecha: " + fecha);
             nodo.setTimeStamp(fecha);
             h.getLista().add(nodo);
             cuantos++;
@@ -115,9 +126,41 @@ public class Puente {
             //System.out.println("tamanio en lista de ese indice: " + l2.getTamanio());
                   
         }
+       }
+       
          
         //graficarHash();
     }
+    
+    public static boolean repetido(String user){
+        //true que si es repetido
+        boolean bandera = true;
+        
+        for (int i = 0; i < contador; i++) {
+            if(tablaH[i]!=null){ // si hay valor
+                Hash h = tablaH[i];
+                ListaEnlazada l = h.getLista();
+                NodoLista aux = l.inicio;
+                while(aux!=null){
+                    String usuarioActual = aux.getNombreUsuario();
+                    if(usuarioActual.equals(user)){
+                        System.out.println("Usuario Repetido:" + user + " en indice: " + i);
+                        bandera = true;
+                    }else{
+                        bandera = false;
+                    }
+                    aux = aux.getSiguiente();
+                }
+            }
+            
+            
+        }
+        System.out.println("retornando: " + bandera);
+        return bandera;
+    }
+    
+    
+    
     public int tamanioHash(){
         int tamanio = 0;
         
@@ -141,7 +184,7 @@ public class Puente {
         PrintWriter escritor;
         try
         {
-            fichero = new FileWriter("graficaHash.dot");
+            fichero = new FileWriter("src/reportes/graficaHash.dot");
             escritor = new PrintWriter(fichero);
             //ver aqui
             escritor.print(getCodigoGraphvizHash());
@@ -160,11 +203,11 @@ public class Puente {
         }
         try{
           Runtime rt = Runtime.getRuntime();
-          rt.exec( "dot -Tjpg -o "+"graficaHash.jpg"+" graficaHash.dot");
+          rt.exec( "dot -Tjpg -o "+"src/reportes/graficaHash.jpg"+" src/reportes/graficaHash.dot");
           //Esperamos medio segundo para dar tiempo a que la imagen se genere.
           //Para que no sucedan errores en caso de que se decidan graficar varios
           //árboles sucesivamente.
-          Thread.sleep(500);
+          //Thread.sleep(500);
         } catch (Exception ex) {
             System.err.println("Error al generar la imagen para el archivo aux_grafico.dot");
         }
@@ -179,9 +222,36 @@ public class Puente {
     public static String getCodigoInternoH(){
         String etiqueta = "";
         for (int i = 0; i <contador; i++) {
-            etiqueta+= i+"[label = \"" +i + ") \"] \n";
+            if(tablaH[i]!=null){ // si hay valor
+                Hash h = tablaH[i];
+                String conta = "nodo"+i;
+                ListaEnlazada l = h.getLista();
+                NodoLista aux = l.inicio;
+                etiqueta+= i+"[label = \"" +i + ") \"]; \n";
+                etiqueta+= i+"->" + aux.getNombreUsuario() + ";\n" ;
+                //etiqueta += aux.getNombreUsuario();
+                while(aux!=null){
+                    //if(aux.getSiguiente()!=null){
+                      // etiqueta+= "->"+ aux.getSiguiente().getNombreUsuario() + ";\n ";
+                   // }
+                    
+                    String contenido;
+                    //etiqueta+= aux.getNombreUsuario();
+                    etiqueta+= " "+aux.getNombreUsuario()+"[label = \"" +aux.getNombreUsuario() + " \"] \n";
+                    if(aux.getSiguiente()!=null){
+                        etiqueta+=aux.getNombreUsuario() +"->" + aux.getSiguiente().getNombreUsuario() + ";\n";
+                    }
+                    //etiqueta+=i+"->"+aux.getNombreUsuario();
+                    aux = aux.getSiguiente();  
+                }
+            }
+            else{
+                etiqueta+= i+"[label = \"" +i + ") \"] \n";
+            }
         }
         return etiqueta;
     }
+    
+    
     
 }

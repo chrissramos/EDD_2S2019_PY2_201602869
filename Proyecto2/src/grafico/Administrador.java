@@ -7,6 +7,7 @@ package grafico;
 
 import enlace.Puente;
 import estructuras.Hash;
+import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,9 +15,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
+import javax.swing.tree.DefaultTreeModel;
 /**
  *
  * @author Chriss Ramos
@@ -25,11 +31,11 @@ public class Administrador extends javax.swing.JFrame {
 
     
     
-    DefaultTableModel modeloC;
-    DefaultTableModel modeloI;
+    public DefaultTableModel modeloC;
+    public DefaultTableModel modeloI;
     
     public Administrador() {
-        
+        //treePrincipal.removeAll();
         initComponents();
         modeloC = new DefaultTableModel();
         modeloC.addColumn("Usuario");
@@ -40,6 +46,22 @@ public class Administrador extends javax.swing.JFrame {
         modeloI.addColumn("Usuario");
         modeloI.addColumn("Motivo");
         this.tablaIncorrecta.setModel(modeloI);
+        
+        //modelo del JTree
+        DefaultTreeModel model = (DefaultTreeModel) treePrincipal.getModel();
+        DefaultMutableTreeNode root = (DefaultMutableTreeNode) model.getRoot();
+        
+        root.removeAllChildren();
+        root.setUserObject("/");
+        DefaultTreeCellRenderer render= (DefaultTreeCellRenderer)treePrincipal.getCellRenderer();
+        render.setLeafIcon(new ImageIcon(getClass().getResource("/reportes/documento.png")));
+        render.setOpenIcon(new ImageIcon(getClass().getResource("/reportes/carpetaAbierta.png")));
+        render.setClosedIcon(new ImageIcon(getClass().getResource("/reportes/carpetaCerrada.png")));
+        model.reload();
+        
+        
+        //model.setRoot(null);
+        
         
         this.setLocationRelativeTo(null);
         
@@ -81,6 +103,12 @@ public class Administrador extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
+        btnVerHash = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        treePrincipal = new javax.swing.JTree();
+        jSeparator3 = new javax.swing.JSeparator();
+        lblSeleccion = new javax.swing.JLabel();
+        jButton12 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,6 +158,11 @@ public class Administrador extends javax.swing.JFrame {
         jLabel4.setText("Carpetas");
 
         jButton3.setText("Crear");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Modificar");
 
@@ -140,6 +173,11 @@ public class Administrador extends javax.swing.JFrame {
         jLabel5.setText("Archivos");
 
         jButton7.setText("Crear");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("Modificar");
 
@@ -147,10 +185,28 @@ public class Administrador extends javax.swing.JFrame {
 
         jButton10.setText("Subir");
 
-        jButton11.setText("Reporte Hash");
+        jButton11.setText("Generar Hash");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton11ActionPerformed(evt);
+            }
+        });
+
+        btnVerHash.setText("Ver Hash");
+        btnVerHash.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerHashActionPerformed(evt);
+            }
+        });
+
+        jScrollPane3.setViewportView(treePrincipal);
+
+        lblSeleccion.setText("Seleccion");
+
+        jButton12.setText("Carga Masiva");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
             }
         });
 
@@ -161,40 +217,52 @@ public class Administrador extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButton1)
-                                .addComponent(jButton2)
-                                .addComponent(jLabel4)
-                                .addComponent(jButton3)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                                .addComponent(jButton4)
-                                .addComponent(jButton5)
-                                .addComponent(jButton6)
-                                .addComponent(jSeparator2))
-                            .addComponent(jLabel5)
-                            .addComponent(jButton7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 432, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnVerHash)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton8)
-                            .addComponent(jButton9)
-                            .addComponent(jButton10))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jSeparator3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButton8)
+                                            .addComponent(jButton9)
+                                            .addComponent(jButton10)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jButton2)
+                                                .addComponent(jLabel4)
+                                                .addComponent(jButton3)
+                                                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                                .addComponent(jButton4)
+                                                .addComponent(jButton5)
+                                                .addComponent(jButton6)
+                                                .addComponent(jSeparator2))
+                                            .addComponent(jLabel5)
+                                            .addComponent(jButton1)
+                                            .addComponent(jButton7)
+                                            .addComponent(jButton12))
+                                        .addGap(70, 70, 70)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblSeleccion)))
+                                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1))
+                                .addGap(0, 273, Short.MAX_VALUE)))
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(83, 83, 83))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,46 +270,62 @@ public class Administrador extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton6)
+                                .addGap(18, 18, 18)
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel5))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 51, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addGap(4, 4, 4)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(310, 310, 310)
+                                .addComponent(jButton7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton12))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton9)
+                            .addComponent(lblSeleccion))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton7)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addComponent(jButton11)
-                .addContainerGap())
+                        .addComponent(jButton10)
+                        .addGap(35, 35, 35)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton11)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnVerHash)
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -268,7 +352,16 @@ public class Administrador extends javax.swing.JFrame {
                     data[1] = "Contrasenia corta";
                     modeloI.addRow(data);
                 }else{
-                    modeloC.addRow(data);
+                    //enviar aqui a hash
+                    String v = data[0];
+                    if(v.equals("﻿Usuario")){
+                        System.out.println("no se agregara campo");
+                    }else{
+                        
+                        Puente.agregar(data[0], data[1]);
+                        //modeloC.addRow(data);
+                    }
+                    
                 }
                 
                 System.out.println("------------------------");
@@ -290,7 +383,98 @@ public class Administrador extends javax.swing.JFrame {
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
         Puente.graficarHash();
+        
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void btnVerHashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerHashActionPerformed
+        // TODO add your handling code here:
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ventanaImagen vI = new ventanaImagen();
+        ImageIcon img = new ImageIcon(getClass().getResource("/reportes/graficaHash.jpg"));
+        int h = img.getIconHeight();
+        int w = img.getIconWidth();
+        Image imagen = img.getImage();
+        ImageIcon iconoEscalado = new ImageIcon (imagen.getScaledInstance(w,h,Image.SCALE_AREA_AVERAGING));
+        //vI.setSize(w+75, h+75);
+        //vI.label1.setSize(w, h);
+        //vI.label1.setBounds(0, 0, w+50, h+50);
+        
+        vI.label1.setIcon(iconoEscalado);
+        vI.scroll1.setViewportView(vI.label1);
+        
+        vI.setVisible(true);
+    }//GEN-LAST:event_btnVerHashActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        String entradaUsuario = JOptionPane.showInputDialog("Nombre de Carpeta:");
+        DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) treePrincipal.getSelectionPath().getLastPathComponent();
+        DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(entradaUsuario);
+        selectedNode.add(newNode);
+        DefaultTreeModel model = (DefaultTreeModel)treePrincipal.getModel();
+        model.reload();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        String nombreArchivo = JOptionPane.showInputDialog("Nombre de Archivo con extension:");
+        
+        DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) treePrincipal.getSelectionPath().getLastPathComponent();
+        DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(nombreArchivo);
+        selectedNode.add(newNode);
+        DefaultTreeModel model = (DefaultTreeModel)treePrincipal.getModel();
+        model.reload();
+        //ahora separar el nombre de la extension
+        
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        String aux;
+        
+        String texto = "";
+        JFileChooser file=new JFileChooser();
+        file.showOpenDialog(this);
+        /**abrimos el archivo seleccionado*/
+        File abre=file.getSelectedFile();
+        try {
+            //System.out.println("Nombre de abre: " + abre.getPath());
+            BufferedReader csvReader = new BufferedReader(new FileReader(abre.getPath()));
+            String row;
+            while((row = csvReader.readLine()) != null){
+                String[] data = row.split(",");
+                System.out.println("Dato:" + data[0] + " " + data[1] );
+                
+                if(data[1].length() < 8){
+                    data[1] = "Contrasenia corta";
+                    modeloI.addRow(data);
+                }else{
+                    //enviar aqui a hash
+                    String v = data[0];
+                    if(v.equals("﻿Usuario")){
+                        System.out.println("no se agregara campo");
+                    }else{
+                        
+                        Puente.agregar(data[0], data[1]);
+                        //modeloC.addRow(data);
+                    }
+                    
+                }
+                
+                System.out.println("------------------------");
+                        
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton12ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,9 +516,11 @@ public class Administrador extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnVerHash;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -350,9 +536,13 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel lblSeleccion;
     private javax.swing.JTable tablaCorrecta;
     private javax.swing.JTable tablaIncorrecta;
+    private javax.swing.JTree treePrincipal;
     // End of variables declaration//GEN-END:variables
 }

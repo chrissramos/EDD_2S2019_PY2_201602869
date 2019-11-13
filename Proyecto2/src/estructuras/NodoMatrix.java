@@ -10,9 +10,26 @@ package estructuras;
  * @author Chriss Ramos
  */
 public class NodoMatrix {
+    String nombreCarpeta;
+    AVLB arbol;
+    NodoMatrix arriba;
+    NodoMatrix abajo;
     NodoMatrix derecha;
-    
+    NodoMatrix izquierda;    
+    int grupo;
+    static int correlativo = 0;
     public NodoMatrix() {
+        
+    }
+    
+    public NodoMatrix(String nombreCarpeta, AVLB arbol){
+        this.nombreCarpeta = nombreCarpeta;
+        this.arbol = arbol;
+        grupo = correlativo++;
+        this.arriba = null;
+        this.abajo = null;
+        this.derecha = null;
+        this.izquierda = null;
     }
     
 }
