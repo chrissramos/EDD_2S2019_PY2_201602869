@@ -15,6 +15,7 @@ public class Matrix {
     NodoMatrix cabeza;
     
     public Matrix(){
+        
     }
     
 }

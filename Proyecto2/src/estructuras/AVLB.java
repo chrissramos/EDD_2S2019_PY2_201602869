@@ -17,7 +17,7 @@ public class AVLB {
     }
     
     public void graficar(String path){
-        raiz.graficar(path);
+        raiz.graficar();
     }
     
     public void insertar(NodoAVLB nodo){

@@ -5,6 +5,7 @@
  */
 package enlace;
 
+import estructuras.Archivo;
 import estructuras.Hash;
 import estructuras.ListaEnlazada;
 import estructuras.NodoLista;
@@ -22,6 +23,8 @@ import java.io.PrintWriter;
  */
 public class Puente {
     public static Hash[] tablaH = new Hash[7];
+    public static Archivo[] archivosT = new Archivo[1000];
+    public static int contadorArchivos = 0;
     
     public static Administrador a = new Administrador();
     public static int contador ; // posiciones totales de la hash

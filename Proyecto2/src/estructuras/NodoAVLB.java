@@ -31,12 +31,12 @@ public class NodoAVLB {
         this.timestamp = timestamp;
     }
     
-    public void graficar(String path){
+    public void graficar(){
         FileWriter fichero = null;
         PrintWriter escritor;
         try
         {
-            fichero = new FileWriter("aux_grafico.dot");
+            fichero = new FileWriter("src/reportes/avl.dot");
             escritor = new PrintWriter(fichero);
             //ver aqui
             escritor.print(getCodigoGraphviz());
@@ -44,18 +44,18 @@ public class NodoAVLB {
         
         } 
         catch (Exception e){
-            System.err.println("Error al escribir el archivo aux_grafico.dot");
+            System.err.println("Error al escribir el archivo avl.dot");
         }finally{
            try {
                 if (null != fichero)
                     fichero.close();
            }catch (Exception e2){
-               System.err.println("Error al cerrar el archivo aux_grafico.dot");
+               System.err.println("Error al cerrar el archivo avl.dot");
            } 
         }
         try{
           Runtime rt = Runtime.getRuntime();
-          rt.exec( "dot -Tjpg -o "+path+" aux_grafico.dot");
+          rt.exec( "dot -Tjpg -o "+"src/reportes/graficaAVL.jpg"+" src/reportes/avl.dot");
           //Esperamos medio segundo para dar tiempo a que la imagen se genere.
           //Para que no sucedan errores en caso de que se decidan graficar varios
           //árboles sucesivamente.
