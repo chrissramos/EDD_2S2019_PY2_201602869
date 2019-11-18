@@ -7,6 +7,9 @@ package proyecto2;
 
 import enlace.Puente;
 import grafico.Login;
+import javax.swing.UIManager;
+import de.javasoft.plaf.synthetica.SyntheticaBlackEyeLookAndFeel;
+import de.javasoft.plaf.synthetica.SyntheticaBlueIceLookAndFeel;
 import estructuras.*;
 
 /**
@@ -43,14 +46,22 @@ public class Proyecto2 {
         arbol.graficar("arbol.jpg");*/
         // TODO code application logic here
         
+        try    {
+            UIManager.setLookAndFeel(new SyntheticaBlackEyeLookAndFeel());
+          }   catch (Exception e)    {
+            e.printStackTrace();
+          }
+        
+            Login v = new Login();
+            v.setTitle("EDD DRIVE");
+            Puente.contador = 7;
+            Puente.porcentaje = 0;
+            Puente.cuantos = 0;
+            v.setVisible(true);
+        
+        }
         
         
-        Login v = new Login();
-        v.setTitle("EDD DRIVE");
-        Puente.contador = 7;
-        Puente.porcentaje = 0;
-        Puente.cuantos = 0;
-        v.setVisible(true);
-    }
+    
     
 }

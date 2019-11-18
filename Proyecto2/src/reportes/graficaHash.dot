@@ -4,72 +4,72 @@ node [shape = record, style=filled, fillcolor=seashell2];
 0[label = "0) "] 
 1[label = "1) "]; 
 1->Witch;
- Witch[label = "Usuario:Witch -Password: 2ffb86bc0a3f0456b7dcda9c4d8dc9508e57a1d0c48067f9d6bc7fc2db0f99b2 -Indice: 1 -TimeStamp: Sun Nov 17 21:31:09 CST 2019 "] 
+ Witch[label = "Usuario:Witch -Password: 2ffb86bc0a3f0456b7dcda9c4d8dc9508e57a1d0c48067f9d6bc7fc2db0f99b2 -Indice: 1 -TimeStamp: Mon Nov 18 00:17:27 CST 2019 "] 
 Witch->Usuario123;
- Usuario123[label = "Usuario:Usuario123 -Password: 8a82a5f6fc722db8a57e25b508f5a008ac65dacffe4ead217e4ebdc31f8a4348 -Indice: 1 -TimeStamp: Sun Nov 17 21:31:10 CST 2019 "] 
+ Usuario123[label = "Usuario:Usuario123 -Password: 8a82a5f6fc722db8a57e25b508f5a008ac65dacffe4ead217e4ebdc31f8a4348 -Indice: 1 -TimeStamp: Mon Nov 18 00:17:27 CST 2019 "] 
 2[label = "2) "] 
 3[label = "3) "]; 
 3->NadaPlete;
- NadaPlete[label = "Usuario:NadaPlete -Password: 982fbf25c34c04fece799f045d0643edf0f629641db457961d4400e7b910ce2c -Indice: 3 -TimeStamp: Sun Nov 17 21:31:08 CST 2019 "] 
+ NadaPlete[label = "Usuario:NadaPlete -Password: 982fbf25c34c04fece799f045d0643edf0f629641db457961d4400e7b910ce2c -Indice: 3 -TimeStamp: Mon Nov 18 00:17:25 CST 2019 "] 
 4[label = "4) "]; 
 4->Bryan;
- Bryan[label = "Usuario:Bryan -Password: 66d4fca6f91a71a033d2369ad7a302bf83b925364cb73bcc9677e378c4685437 -Indice: 4 -TimeStamp: Sun Nov 17 21:31:08 CST 2019 "] 
+ Bryan[label = "Usuario:Bryan -Password: 66d4fca6f91a71a033d2369ad7a302bf83b925364cb73bcc9677e378c4685437 -Indice: 4 -TimeStamp: Mon Nov 18 00:17:25 CST 2019 "] 
 Bryan->Hugo;
- Hugo[label = "Usuario:Hugo -Password: 685a83df9e37792592b5ff9eb70f74a251cccfe338f35ebb10db3ddd55d1a4f6 -Indice: 4 -TimeStamp: Sun Nov 17 21:31:09 CST 2019 "] 
+ Hugo[label = "Usuario:Hugo -Password: 685a83df9e37792592b5ff9eb70f74a251cccfe338f35ebb10db3ddd55d1a4f6 -Indice: 4 -TimeStamp: Mon Nov 18 00:17:26 CST 2019 "] 
 Hugo->Gargante;
- Gargante[label = "Usuario:Gargante -Password: 1e9e5d8414772d1ece38fd53783d2b6cfb73514c0ecd32c1c3e356e9cd91240 -Indice: 4 -TimeStamp: Sun Nov 17 21:31:09 CST 2019 "] 
+ Gargante[label = "Usuario:Gargante -Password: 1e9e5d8414772d1ece38fd53783d2b6cfb73514c0ecd32c1c3e356e9cd91240 -Indice: 4 -TimeStamp: Mon Nov 18 00:17:26 CST 2019 "] 
 Gargante->Ninnette;
- Ninnette[label = "Usuario:Ninnette -Password: abce4273b5af694ce388fda3ef4005740196f6459f661de8e81596e811965929 -Indice: 4 -TimeStamp: Sun Nov 17 21:31:09 CST 2019 "] 
+ Ninnette[label = "Usuario:Ninnette -Password: abce4273b5af694ce388fda3ef4005740196f6459f661de8e81596e811965929 -Indice: 4 -TimeStamp: Mon Nov 18 00:17:27 CST 2019 "] 
 5[label = "5) "]; 
 5->Juancho;
- Juancho[label = "Usuario:Juancho -Password: a872d785c1d69ee5a84abeff48b5d2fa6731cbefe57b76c8a7a0e3b35b44f123 -Indice: 5 -TimeStamp: Sun Nov 17 21:31:08 CST 2019 "] 
+ Juancho[label = "Usuario:Juancho -Password: a872d785c1d69ee5a84abeff48b5d2fa6731cbefe57b76c8a7a0e3b35b44f123 -Indice: 5 -TimeStamp: Mon Nov 18 00:17:25 CST 2019 "] 
 6[label = "6) "]; 
 6->Alex4191;
- Alex4191[label = "Usuario:Alex4191 -Password: 15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225 -Indice: 6 -TimeStamp: Sun Nov 17 21:31:08 CST 2019 "] 
+ Alex4191[label = "Usuario:Alex4191 -Password: 15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225 -Indice: 6 -TimeStamp: Mon Nov 18 00:17:25 CST 2019 "] 
 Alex4191->Comandante;
- Comandante[label = "Usuario:Comandante -Password: 69a8ef409177b3c0699f6453fdd6a8252a0aa85dad9f956d32712525e89e73c3 -Indice: 6 -TimeStamp: Sun Nov 17 21:31:09 CST 2019 "] 
+ Comandante[label = "Usuario:Comandante -Password: 69a8ef409177b3c0699f6453fdd6a8252a0aa85dad9f956d32712525e89e73c3 -Indice: 6 -TimeStamp: Mon Nov 18 00:17:26 CST 2019 "] 
 Comandante->Messi;
- Messi[label = "Usuario:Messi -Password: e94e4a0ef5bd5995fdbc8dcdb6770bd6c69e081aaac32a7040a2ec1f7904b377 -Indice: 6 -TimeStamp: Sun Nov 17 21:31:09 CST 2019 "] 
+ Messi[label = "Usuario:Messi -Password: e94e4a0ef5bd5995fdbc8dcdb6770bd6c69e081aaac32a7040a2ec1f7904b377 -Indice: 6 -TimeStamp: Mon Nov 18 00:17:27 CST 2019 "] 
 7[label = "7) "]; 
 7->Usuario;
- Usuario[label = "Usuario:Usuario -Password: 1e9eceecde60d088f71cc373f16f46c61a6249e43aeee5197f1eadd285fb836f -Indice: 7 -TimeStamp: Sun Nov 17 21:31:09 CST 2019 "] 
+ Usuario[label = "Usuario:Usuario -Password: 1e9eceecde60d088f71cc373f16f46c61a6249e43aeee5197f1eadd285fb836f -Indice: 7 -TimeStamp: Mon Nov 18 00:17:26 CST 2019 "] 
 Usuario->Usuario444;
- Usuario444[label = "Usuario:Usuario444 -Password: 7fe5b0ec45b3c410e23e2708d90fb57b1484e06705528f70e9294bf4668d1d87 -Indice: 7 -TimeStamp: Sun Nov 17 21:31:10 CST 2019 "] 
+ Usuario444[label = "Usuario:Usuario444 -Password: 7fe5b0ec45b3c410e23e2708d90fb57b1484e06705528f70e9294bf4668d1d87 -Indice: 7 -TimeStamp: Mon Nov 18 00:17:27 CST 2019 "] 
 Usuario444->Streamer;
- Streamer[label = "Usuario:Streamer -Password: b9a42f570509baa166a3964e49e192ec5365a5bab6931f6301ea450b67530e61 -Indice: 7 -TimeStamp: Sun Nov 17 21:31:10 CST 2019 "] 
+ Streamer[label = "Usuario:Streamer -Password: b9a42f570509baa166a3964e49e192ec5365a5bab6931f6301ea450b67530e61 -Indice: 7 -TimeStamp: Mon Nov 18 00:17:27 CST 2019 "] 
 8[label = "8) "]; 
 8->SpinoJefe;
- SpinoJefe[label = "Usuario:SpinoJefe -Password: 18cc28453bc596486a8a117bca5cdbaf2bc1fc86e31c0ca6c04e75bd2535c3ef -Indice: 8 -TimeStamp: Sun Nov 17 21:31:09 CST 2019 "] 
+ SpinoJefe[label = "Usuario:SpinoJefe -Password: 18cc28453bc596486a8a117bca5cdbaf2bc1fc86e31c0ca6c04e75bd2535c3ef -Indice: 8 -TimeStamp: Mon Nov 18 00:17:26 CST 2019 "] 
 9[label = "9) "] 
 10[label = "10) "] 
 11[label = "11) "]; 
 11->XXXtentacion;
- XXXtentacion[label = "Usuario:XXXtentacion -Password: 49a05f1776740ddc66ec69fee82585fcfe65d755fd99c088244c262ecfb28947 -Indice: 11 -TimeStamp: Sun Nov 17 21:31:10 CST 2019 "] 
+ XXXtentacion[label = "Usuario:XXXtentacion -Password: 49a05f1776740ddc66ec69fee82585fcfe65d755fd99c088244c262ecfb28947 -Indice: 11 -TimeStamp: Mon Nov 18 00:17:27 CST 2019 "] 
 12[label = "12) "] 
 13[label = "13) "] 
 14[label = "14) "]; 
 14->Jason;
- Jason[label = "Usuario:Jason -Password: f6dd0da13c2f66615bd89a0706b4c7d82685dc8c8bca705b975e1e471db67d0a -Indice: 14 -TimeStamp: Sun Nov 17 21:31:09 CST 2019 "] 
+ Jason[label = "Usuario:Jason -Password: f6dd0da13c2f66615bd89a0706b4c7d82685dc8c8bca705b975e1e471db67d0a -Indice: 14 -TimeStamp: Mon Nov 18 00:17:27 CST 2019 "] 
 15[label = "15) "]; 
 15->Antonio;
- Antonio[label = "Usuario:Antonio -Password: f90cad0d5bebc14f977d423ff1cbf39d3e92056df8df25fe34664594f5ce48bf -Indice: 15 -TimeStamp: Sun Nov 17 21:31:10 CST 2019 "] 
+ Antonio[label = "Usuario:Antonio -Password: f90cad0d5bebc14f977d423ff1cbf39d3e92056df8df25fe34664594f5ce48bf -Indice: 15 -TimeStamp: Mon Nov 18 00:17:27 CST 2019 "] 
 16[label = "16) "] 
 17[label = "17) "] 
 18[label = "18) "] 
 19[label = "19) "]; 
 19->ElKevin;
- ElKevin[label = "Usuario:ElKevin -Password: a4c97c9e86d73a9fa744cf0e674c9366e8c3bd1802835b9c79acc1ab7e3c65b9 -Indice: 19 -TimeStamp: Sun Nov 17 21:31:10 CST 2019 "] 
+ ElKevin[label = "Usuario:ElKevin -Password: a4c97c9e86d73a9fa744cf0e674c9366e8c3bd1802835b9c79acc1ab7e3c65b9 -Indice: 19 -TimeStamp: Mon Nov 18 00:17:27 CST 2019 "] 
 20[label = "20) "] 
 21[label = "21) "] 
 22[label = "22) "] 
 23[label = "23) "] 
 24[label = "24) "]; 
 24->Tostada;
- Tostada[label = "Usuario:Tostada -Password: ca635cc1ebdb327e9c95cfb639d4c698d6dd0c1ac510c75c06ed85bcbf7b2bf6 -Indice: 24 -TimeStamp: Sun Nov 17 21:31:10 CST 2019 "] 
+ Tostada[label = "Usuario:Tostada -Password: ca635cc1ebdb327e9c95cfb639d4c698d6dd0c1ac510c75c06ed85bcbf7b2bf6 -Indice: 24 -TimeStamp: Mon Nov 18 00:17:27 CST 2019 "] 
 25[label = "25) "] 
 26[label = "26) "]; 
 26->Pan;
- Pan[label = "Usuario:Pan -Password: 2aadad2290a6b92912d97f2ff43c1eef092ea58c4112aa717c619f8ea03aadc7 -Indice: 26 -TimeStamp: Sun Nov 17 21:31:10 CST 2019 "] 
+ Pan[label = "Usuario:Pan -Password: 2aadad2290a6b92912d97f2ff43c1eef092ea58c4112aa717c619f8ea03aadc7 -Indice: 26 -TimeStamp: Mon Nov 18 00:17:27 CST 2019 "] 
 27[label = "27) "] 
 28[label = "28) "] 
 }

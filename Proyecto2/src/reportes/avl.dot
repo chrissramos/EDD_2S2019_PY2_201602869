@@ -1,11 +1,11 @@
 digraph grafica{
 rankdir=TB;
 node [shape = record, style=filled, fillcolor=seashell2];
-nodo2 [ label ="<C0>|Nombre: Ensayo Contenido: Ensayo de 6 lineas|<C1>"];
-nodo3 [ label ="Nombre: Chrome Contenido: Archivo Ejecutable"];
-nodo2:C0->nodo3
-nodo1 [ label ="<C0>|Nombre: Main Contenido: Python Script|<C1>"];
-nodo4 [ label ="Nombre: Entrada Contenido: Datos de entrada calificacion proyecto"];
-nodo1:C0->nodo4
-nodo2:C1->nodo1
+nodo7 [ label ="<C0>|Nombre: entrada22 Contenido: Archivo normal de texto xd|<C1>"];
+nodo6 [ label ="Nombre: Objeto Contenido: NullPointerException"];
+nodo7:C0->nodo6
+nodo5 [ label ="<C0>|Nombre: zumba Contenido: Clase header de c++|<C1>"];
+nodo8 [ label ="Nombre: proyecto Contenido: Archivo de Java portable"];
+nodo5:C0->nodo8
+nodo7:C1->nodo5
 }
