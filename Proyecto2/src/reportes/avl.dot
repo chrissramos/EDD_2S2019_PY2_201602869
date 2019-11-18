@@ -1,11 +1,11 @@
 digraph grafica{
 rankdir=TB;
 node [shape = record, style=filled, fillcolor=seashell2];
-nodo3 [ label ="<C0>|libro|<C1>"];
-nodo2 [ label ="chrome"];
-nodo3:C0->nodo2
-nodo1 [ label ="<C0>|tarea1|<C1>"];
-nodo4 [ label ="proyecto"];
+nodo2 [ label ="<C0>|Nombre: Ensayo Contenido: Ensayo de 6 lineas|<C1>"];
+nodo3 [ label ="Nombre: Chrome Contenido: Archivo Ejecutable"];
+nodo2:C0->nodo3
+nodo1 [ label ="<C0>|Nombre: Main Contenido: Python Script|<C1>"];
+nodo4 [ label ="Nombre: Entrada Contenido: Datos de entrada calificacion proyecto"];
 nodo1:C0->nodo4
-nodo3:C1->nodo1
+nodo2:C1->nodo1
 }

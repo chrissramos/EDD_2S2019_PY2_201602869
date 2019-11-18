@@ -75,9 +75,9 @@ public class NodoAVLB {
     private String getCodigoInterno() {
         String etiqueta;
         if(izquierdo==null && derecho==null){
-            etiqueta="nodo"+id+" [ label =\""+this.nombreA+"\"];\n";
+            etiqueta="nodo"+id+" [ label =\""+"Nombre: " + this.nombreA+ " Contenido: " + this.contenido + "\"];\n";
         }else{
-            etiqueta="nodo"+id+" [ label =\"<C0>|"+this.nombreA+"|<C1>\"];\n";
+            etiqueta="nodo"+id+" [ label =\"<C0>|"+"Nombre: "+this.nombreA+ " Contenido: " + this.contenido+"|<C1>\"];\n";
         }
         if(izquierdo!=null){
             etiqueta=etiqueta + izquierdo.getCodigoInterno() +

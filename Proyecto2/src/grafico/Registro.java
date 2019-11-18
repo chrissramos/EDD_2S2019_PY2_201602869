@@ -7,6 +7,9 @@ package grafico;
 
 
 import enlace.Puente;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 /**
  *
@@ -108,7 +111,11 @@ public class Registro extends javax.swing.JFrame {
         if(txtPassR.getText().length() < 8){
             JOptionPane.showMessageDialog(null, "La contrasenia debe ser de al menos 8 caracteres");
         }else{
-            Puente.agregar(txtUsuarioR.getText(), txtPassR.getText());
+            try {
+                Puente.agregar(txtUsuarioR.getText(), txtPassR.getText());
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
         txtPassR.setText("");

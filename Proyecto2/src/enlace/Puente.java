@@ -16,6 +16,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  *
@@ -31,12 +35,41 @@ public class Puente {
     public static float porcentaje; // porcentaje de ocupado
     public static int cuantos; // cuantos registrios tiene la hash
     
+    public static String toHexString(byte[] hash) 
+    { 
+        // Convert byte array into signum representation  
+        BigInteger number = new BigInteger(1, hash);  
+  
+        // Convert message digest into hex value  
+        StringBuilder hexString = new StringBuilder(number.toString(16));  
+  
+        // Pad with leading zeros 
+        while (hexString.length() < 32)  
+        {  
+            hexString.insert(0, '0');  
+        }  
+  
+        return hexString.toString();  
+    }
+    
+    public static byte[] getSHA(String input) throws NoSuchAlgorithmException 
+    {  
+        // Static getInstance method is called with hashing SHA  
+        MessageDigest md = MessageDigest.getInstance("SHA-256");  
+  
+        // digest() method called  
+        // to calculate message digest of an input  
+        // and return array of byte 
+        return md.digest(input.getBytes(StandardCharsets.UTF_8));  
+    }
+    
     //agregar en esta clase los metodos
-    public static void agregar(String user, String pass){
+    public static void agregar(String user, String pass) throws NoSuchAlgorithmException{
         //aqui se agrega a la hash  codificar el nombre de usuario 
         //obtener valor entero de usuario
        //JOptionPane.showMessageDialog(null, "se agregara: " + user + ","+ pass);
        String[] data = new String[2];
+       String passSha = toHexString(getSHA(pass));
        data[0] = user;
            
        if(cuantos>0 &&repetido(user) ){
@@ -45,7 +78,8 @@ public class Puente {
            a.modeloI.addRow(data);
            
        }else{
-       data[1]= pass;
+       data[1]= passSha;
+       // pass pasarla a sha256
        a.modeloC.addRow(data);
        int suma = 0;
        int tamanio = user.length();
@@ -215,14 +249,14 @@ public class Puente {
             System.err.println("Error al generar la imagen para el archivo aux_grafico.dot");
         }
     }
-    private static String getCodigoGraphvizHash() {
+    private static String getCodigoGraphvizHash() throws NoSuchAlgorithmException {
         return "digraph grafica{\n" +
                "rankdir=LR;\n" +
                "node [shape = record, style=filled, fillcolor=seashell2];\n"+
                 getCodigoInternoH()+
                 "}\n";
     }
-    public static String getCodigoInternoH(){
+    public static String getCodigoInternoH() throws NoSuchAlgorithmException{
         String etiqueta = "";
         for (int i = 0; i <contador; i++) {
             if(tablaH[i]!=null){ // si hay valor
@@ -240,7 +274,8 @@ public class Puente {
                     
                     String contenido;
                     //etiqueta+= aux.getNombreUsuario();
-                    etiqueta+= " "+aux.getNombreUsuario()+"[label = \"" +aux.getNombreUsuario() + " \"] \n";
+                    String passSha = toHexString(getSHA(aux.getPassUsuario()));
+                    etiqueta+= " "+aux.getNombreUsuario()+"[label = \"" + "Usuario:"  +aux.getNombreUsuario() + " -Password: "+ passSha+ " -Indice: " + i + " -TimeStamp: "+ aux.getTimeStamp()+ " \"] \n";
                     if(aux.getSiguiente()!=null){
                         etiqueta+=aux.getNombreUsuario() +"->" + aux.getSiguiente().getNombreUsuario() + ";\n";
                     }
